@@ -2,16 +2,20 @@ const isIntersecting = (entry) => {
     return entry.isIntersecting //true dentro de la panatalla
 }
 
-const accion = (allElements) => {
-    const nodo = allElements.target;
-    console.log('Hola');
-    observer.unobserve(nodo);
+const loadImage = (allElements) => {
+    const container = allElements.target;
+    const imagen = container.firstChild;
+    const url = imagen.dataset.src;
+    //cargar imagen
+    imagen.src = url;
+
+    observer.unobserve(container);
 }
 
 const observer = new IntersectionObserver((allElements) => {
     allElements
         .filter(isIntersecting)
-        .forEach(accion)
+        .forEach(loadImage)
 });
 
 export const registerImage = (imagen) => {
