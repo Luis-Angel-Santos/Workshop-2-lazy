@@ -10,7 +10,7 @@ const createImage = () => {
     container.className = 'p-4';
 
     const image = document.createElement('img');
-    image.className = 'mx-auto';
+    image.className = 'mx-auto rounded-md bg-gray-300';
     image.width = '300';
     image.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
 
@@ -22,7 +22,7 @@ const createImage = () => {
 //agregandola
 const nuevaImagen = createImage()
 const mountNode = document.getElementById('images');
-const addButton = document.querySelector('button');
+const addButton = document.getElementById('agregar');
 
 const addImage = () => {
     const newImage = createImage();
@@ -32,6 +32,8 @@ const addImage = () => {
 
 addButton.addEventListener('click', addImage);
 
-
-
-
+// Limpiar
+const clean = document.getElementById('limpiar');
+clean.addEventListener('click', () => {
+  mountNode.innerHTML = '';
+});
